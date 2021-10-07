@@ -2,22 +2,21 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 
 chai.use(chaiHttp);
+const request = chai.request('http://localhost:3000');
+const expect = chai.expect;
+const should = chai.should();
 
 describe('Algumas requisições FEIAS', () => {
   it('Deve rodar uma requisição FEIA do tipo GET', () => {
     // console.log('Hello bug');
-    chai
-      .request('http://localhost:3000')
-      .get('/produtos')
-      .end((err, res) => {
-        console.log(res.body);
-      });
+    request.get('/produtos').end((err, res) => {
+      console.log(res.body);
+    });
   });
 
   it('Deve rodar uma requisição FEIA do tipo POST', () => {
     // console.log('Hello bug');
-    chai
-      .request('http://localhost:3000')
+    request
       .post('/login')
       .send({
         email: 'fulano@qa.com',
@@ -28,10 +27,9 @@ describe('Algumas requisições FEIAS', () => {
       });
   });
 
-  it.only('Só pra dar agonia, mais uma requisição FEIA', () => {
+  it('Só pra dar agonia, mais uma requisição FEIA', () => {
     // console.log('Hello bug');
-    chai
-      .request('http://localhost:3000')
+    request
       .post('/produtos')
       .send({
         nome: 'Caneta azul',
