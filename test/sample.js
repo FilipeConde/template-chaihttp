@@ -1,16 +1,15 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import Produtos from '../services/Produtos.js'
 
 chai.use(chaiHttp);
 
 describe('Algumas requisições FEIAS', () => {
-  it('Deve rodar uma requisição FEIA do tipo GET', () => {
+  it.only('Deve rodar uma requisição FEIA do tipo GET', async () => {
     // console.log('Hello bug');
-    chai
-      .request('http://localhost:3000')
-      .get('/produtos')
-      .end((err, res) => {
-        console.log(res.body);
+    await Produtos.listarProdutos()
+      .then(async (err, res) => {
+       await console.log(res.body);
       });
   });
 
@@ -28,7 +27,7 @@ describe('Algumas requisições FEIAS', () => {
       });
   });
 
-  it.only('Só pra dar agonia, mais uma requisição FEIA', () => {
+  it('Só pra dar agonia, mais uma requisição FEIA', () => {
     // console.log('Hello bug');
     chai
       .request('http://localhost:3000')
