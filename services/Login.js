@@ -1,11 +1,9 @@
-import Rest from './_rest.js'
+import Rest from './_rest.js';
 
-const ROTA = '/login'
+const ROTA = '/login';
 
-export class Login extends Rest {
-
-    static realizarLogin() {
-        return Rest.get(ROTA)
-    }
-
+export default class Login extends Rest {
+  static realizarLogin(body) {
+    return Rest.post(ROTA, body);
+  }
 }

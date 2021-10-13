@@ -1,11 +1,13 @@
-import Rest from './_rest.js'
+import Rest from './_rest.js';
 
-const ROTA = '/produtos'
+const ROTA = '/produtos';
 
 export default class Produtos extends Rest {
+  static listarProdutos() {
+    return Rest.get(ROTA);
+  }
 
-    static listarProdutos() {
-        return Rest.get(ROTA)
-    }
-
+  static cadastrarProduto(body, auth = null) {
+    return Rest.post(ROTA, body, auth);
+  }
 }
